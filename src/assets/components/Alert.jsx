@@ -1,7 +1,9 @@
-const Alert = () => {
-  console.log(msg)
+const Alert = ({ Alert, color }) => {
+  
+  console.log(Alert.msg)
   return <>
- 
+    <span className={color}> {msg} </span>
+
   </>;
 };
 

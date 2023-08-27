@@ -24,9 +24,9 @@ const Registro = () => {
       </div>
       <h6>o usa tu email para registrarte </h6>
       <Formulario setAlert={setAlert} />
-      {console.log("registro",alert.msg)}
- 
-    </main>
+      {console.log("registro", alert.msg)}
+      {alert.msg && <Alert color={alert.color} msg={alert.msg} />}
+     </main>
   );
 };
 
