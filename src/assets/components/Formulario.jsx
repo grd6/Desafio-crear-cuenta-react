@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const Formulario = ({ setAlert }) => {
+const Formulario = ({ setMyAlert }) => {
   const [datos, setDatos] = useState({
     name: "",
     email: "",
@@ -12,35 +12,27 @@ const Formulario = ({ setAlert }) => {
   const validar = (e) => {
     e.preventDefault();
     const { name, email, password, cPassword } = datos;
+    const noData = !name || !email || !password || !cPassword
+    const wrongPass = password !== cPassword
     //const validarinpt = !name || !email || !password || !cPassword;
-    console.log("Formulario", validar);
-    console.log("datos",datos)
-    if (!name || !email || !password || !cPassword) {
-      console.log("if")
-      setAlert({
+    
+    noData ? setMyAlert({
         error: true,
         msg: "Debe de llenar todos los campos!",
         color:"alert alert-danger mt-3"
-        
-      });
-      return
-    }
-    if (password !== cPassword) {
-      setAlert({
-        error: true,
-        msg: "Password no son iguales",
-        color:"alert alert-danger mt-3"
-      });
-      return;
-    }
-
-    setAlert({
-      error: false,
-      msg: "Cuenta creada!",
-      color:"alert alert-success mt-3"
-    });
-
+      }) :
+      setMyAlert({
+        error: false,
+        msg: "Cuenta creada!",
+        color:"alert alert-success mt-3"
+      })
  
+    wrongPass == true ? setMyAlert({
+      error: true,
+      msg: "Password no son iguales",
+      color: "alert alert-danger mt-3"
+    }) : null;
+
     setDatos({
       name: "",
       email: "",
@@ -96,7 +88,7 @@ const Formulario = ({ setAlert }) => {
         />
       </div>
       <div className="d-grid">
-        <button type="submit" className="btn btn-success">
+        <button type="submit" className="btn btn-success" size="lg">
           Registrarse
         </button>
       </div>

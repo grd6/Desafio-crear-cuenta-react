@@ -1,8 +1,13 @@
-const Alert = () => {
-  console.log(msg)
+const CustomAlert = ({ info, color }) => {
+  
   return <>
- 
+    <div className={info.color}>
+      <p>
+        {info.msg}
+      </p>
+    </div>
+
   </>;
 };
 
-export default Alert;
+export default CustomAlert;

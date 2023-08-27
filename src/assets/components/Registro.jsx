@@ -3,13 +3,14 @@ import { AiFillLinkedin } from "react-icons/ai";
 import Formulario from "./Formulario";
 import SocialButton from "./SocialButton";
 import { useState } from "react";
-import Alert from "./Alert";
+import CustomAlert from "./Alert";
 
 const Registro = () => {
   const Facebook = <BsFacebook />;
   const Github = <BsGithub />;
   const Linkedin = <AiFillLinkedin />;
-  const [alert, setAlert] = useState({
+
+  const [myAlert, setMyAlert] = useState({
     error: "",
     msg: "",
     color:""
@@ -23,10 +24,12 @@ const Registro = () => {
         <SocialButton icon={Linkedin} />
       </div>
       <h6>o usa tu email para registrarte </h6>
-      <Formulario setAlert={setAlert} />
-      {console.log("registro",alert.msg)}
- 
-    </main>
+      <Formulario setMyAlert={setMyAlert} />
+      
+      {myAlert.msg && <CustomAlert info={myAlert} />}
+  
+
+     </main>
   );
 };
 
